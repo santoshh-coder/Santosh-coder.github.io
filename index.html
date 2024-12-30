@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Friend Name Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Best Friend Name Generator</h1>
+  <p>Enter two names and see your unique bond name!</p>
+  <form id="nameForm">
+    <input type="text" id="name1" placeholder="Enter your name" required>
+    <input type="text" id="name2" placeholder="Enter friend's name" required>
+    <button type="button" onclick="generateName()">Generate Name</button>
+  </form>
+  <h3 id="result"></h3>
+
+  <script>
+    function generateName() {
+      const name1 = document.getElementById('name1').value;
+      const name2 = document.getElementById('name2').value;
+
+      if (name1 && name2) {
+        const fusionName = name1.slice(0, 3) + name2.slice(-3);
+        document.getElementById('result').innerText = `Your Best Friend Name: ${fusionName}`;
+        saveToDatabase(name1, name2, fusionName); // Save to database
+      } else {
+        alert("Please enter both names!");
+      }
+    }
+
+    function saveToDatabase(name1, name2, fusionName) {
+      console.log(`Saved: ${name1}, ${name2}, ${fusionName}`);
+      // Backend code here
+    }
+  </script>
+</body>
+</html>
